@@ -1,14 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-//import Image from 'next/image'
+import Image from 'next/image'
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState('')
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
     const handleScroll = () => {
-      const sections = ['home', 'services', 'courses', 'about', 'contact']
+      const sections = ['home', 'services', 'courses', 'team', 'about', 'contact']
       let current = ''
 
       for (const section of sections) {
@@ -32,22 +34,26 @@ const Header = () => {
     }
   }
 
+  if (!isClient) {
+    return null // or a loading placeholder
+  }
+
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-          {/* <Image
+            <Image
               src="/images/logopathway.png"
-              alt="GreenSite Logo"
-              width={70}
-              height={70}
+              alt="Pathway Prodigy Logo"
+              width={60}
+              height={60}
               className="rounded-full"
-            /> */}
+            />
             <span className="text-xl font-bold text-green-700">Pathway Prodigy</span>
           </div>
           <ul className="flex space-x-4">
-            {['Home', 'Services', 'Courses', 'About', 'Contact'].map((item) => (
+            {['Home', 'Services', 'Courses', 'Team', 'About', 'Contact'].map((item) => (
               <li key={item}>
                 <button
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -69,6 +75,3 @@ const Header = () => {
 }
 
 export default Header
-
-
-

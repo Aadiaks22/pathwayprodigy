@@ -1,12 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const CourseCarousel = ({ courses }: { courses: { title: string; description: string }[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % (courses.length - 3))
@@ -14,6 +19,10 @@ const CourseCarousel = ({ courses }: { courses: { title: string; description: st
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + courses.length - 3) % (courses.length - 3))
+  }
+
+  if (!isClient) {
+    return null; // or a loading placeholder
   }
 
   return (
