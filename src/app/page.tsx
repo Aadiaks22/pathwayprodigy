@@ -4,7 +4,9 @@ import Services from './components/Services'
 import Courses from './components/Courses'
 //import Team from './components/Team'
 import About from './components/About'
+import FAQ from './components/FAQ'
 import Contact from './components/Contact'
+import JobOpportunities from './components/JobOpportunities'
 
 export default function Page() {
   return (
@@ -14,8 +16,10 @@ export default function Page() {
         <Home />
         <Services />
         <Courses />
+        <JobOpportunities/>
         {/* <Team /> */}
         <About />
+        <FAQ />
         <Contact />
       </main>
     </div>
