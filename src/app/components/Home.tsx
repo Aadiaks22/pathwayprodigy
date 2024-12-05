@@ -19,22 +19,23 @@ const BackgroundSlider = () => {
   }
 
   const images = [
-    '/images/slider-img-1.jpg',
-    '/images/slider-img-2.jpg',
-    '/images/slider-img-3.jpg',
+    '/images/slider-img-5.jpg',
+    '/images/slider-img-6.jpg',
+    '/images/slider-img-7.jpg',
   ]
 
   return (
     <div className="absolute inset-0">
       <Slider {...settings}>
         {images.map((image, index) => (
-          <div key={index} className="w-full h-screen">
+          <div key={index} className="w-full h-screen relative">
             <Image
               src={image}
               alt={`Background ${index + 1}`}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
+              priority={index === 0}
             />
           </div>
         ))}
@@ -57,9 +58,6 @@ const Home = () => {
       <div className="relative z-20 text-center w-full max-w-4xl px-6 py-12 bg-transparent backdrop-blur-sm rounded-lg">
         <h1 className="text-5xl font-bold text-white mb-6 leading-tight">Welcome to Pathway Prodigy</h1>
         <p className="text-2xl font-bold text-orange-400 mb-10">Your one-stop solution for Career Excellence</p>
-        {/* <button className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-          Get Started
-        </button> */}
       </div>
     </section>
   )

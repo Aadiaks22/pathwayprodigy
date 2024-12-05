@@ -30,10 +30,10 @@ const Services = () => {
                 <div className="p-3 bg-orange-100 rounded-full mb-4">
                   <service.icon className="w-8 h-8 text-orange-500" />
                 </div>
-                <CardTitle className="text-green-700 text-xl text-center">{service.title}</CardTitle>
+                <CardTitle className="text-green-700 font-bold text-xl text-center">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-orange-600 text-center">{service.description}</p>
+                <p className="text-orange-600 font-bold text-center">{service.description}</p>
               </CardContent>
             </Card>
           ))}

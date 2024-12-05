@@ -7,6 +7,7 @@ import About from './components/About'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import JobOpportunities from './components/JobOpportunities'
+import Footer from './components/Footer'
 
 export default function Page() {
   return (
@@ -22,6 +23,7 @@ export default function Page() {
         <FAQ />
         <Contact />
       </main>
+      <Footer/>
     </div>
   )
 }
