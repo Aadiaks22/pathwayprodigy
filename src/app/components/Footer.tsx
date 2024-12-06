@@ -1,8 +1,15 @@
+'use client'
+
+//import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react'
+import { useForm, ValidationError } from "@formspree/react"
 
 const Footer = () => {
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID as string)
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-green-800 text-white py-4">
       <div className="container mx-auto px-4">
@@ -60,7 +67,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2" />
-                <a href="tel:+1234567890" className="hover:text-orange-400 transition-colors">+919454430933</a>
+                <a href="tel:+919454430933" className="hover:text-orange-400 transition-colors">+919454430933</a>
               </li>
             </ul>
           </div>
@@ -69,28 +76,44 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4 text-orange-400">Stay Updated</h3>
             <p className="mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="px-4 py-2 w-full rounded-l-md focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-800"
-              />
-              <button
-                type="submit"
-                className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-r-md transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
+            {state.succeeded ? (
+              <p className="text-green-400">Thanks for subscribing!</p>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
+                <div className="flex">
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Your email"
+                    className="px-4 py-2 w-full rounded-l-md focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-800"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={state.submitting}
+                    className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-r-md transition-colors disabled:opacity-50"
+                  >
+                    {state.submitting ? 'Subscribing...' : 'Subscribe'}
+                  </button>
+                </div>
+                <ValidationError 
+                  prefix="Email" 
+                  field="email"
+                  errors={state.errors}
+                  className="text-red-400 text-sm"
+                />
+              </form>
+            )}
           </div>
         </div>
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-green-700 text-center">
-          <p>&copy; 2024 Pathway Prodigy. All rights reserved.</p>
+          <p>&copy; {currentYear} Pathway Prodigy. All rights reserved.</p>
         </div>
 
-        {/* Creative Element: Floating Graduation Caps {new Date().getFullYear()}*/}
+        {/* Creative Element: Floating Graduation Caps */}
         {/* <div className="hidden lg:block">
           {[...Array(5)].map((_, i) => (
             <div

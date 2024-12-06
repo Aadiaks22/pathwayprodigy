@@ -1,33 +1,35 @@
 'use client'
 
-import { useState, FormEvent, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useForm, ValidationError } from "@formspree/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Send, Mail, Phone, User, MessageSquare } from 'lucide-react'
 
 const Contact = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [message, setMessage] = useState('')
-  const [mailtoLink, setMailtoLink] = useState('')
   const [isClient, setIsClient] = useState(false)
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID as string)
 
   useEffect(() => {
     setIsClient(true)
   }, [])
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const subject = encodeURIComponent('New Contact Form Submission')
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`)
-    const link = `mailto:aadiaks220@gmail.com?subject=${subject}&body=${body}`
-    setMailtoLink(link)
-  }
-
   if (!isClient) {
     return null // or a loading placeholder
+  }
+
+  if (state.succeeded) {
+    return (
+      <section id="contact" className="py-10 bg-gradient-to-b from-green-50 to-orange-50">
+        <div className="container mx-auto max-w-4xl px-4">
+          <div className="bg-white rounded-lg shadow-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-green-700 mb-4">Thank You!</h2>
+            <p className="text-lg text-gray-600">Your message has been successfully sent. We will get back to you soon.</p>
+          </div>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -56,9 +58,8 @@ const Contact = () => {
                   <User className="absolute top-3 left-3 text-gray-400" />
                   <Input
                     type="text"
+                    name="name"
                     placeholder="Your Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
                     required
                     className="pl-10 w-full border-orange-200 focus:border-green-500 focus:ring-green-500"
                   />
@@ -67,110 +68,45 @@ const Contact = () => {
                   <Mail className="absolute top-3 left-3 text-gray-400" />
                   <Input
                     type="email"
+                    name="email"
                     placeholder="Your Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                     required
                     className="pl-10 w-full border-orange-200 focus:border-green-500 focus:ring-green-500"
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
                 <div className="relative">
                   <Phone className="absolute top-3 left-3 text-gray-400" />
                   <Input
                     type="tel"
+                    name="phone"
                     placeholder="Your Phone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
                     className="pl-10 w-full border-orange-200 focus:border-green-500 focus:ring-green-500"
                   />
                 </div>
                 <div className="relative">
                   <MessageSquare className="absolute top-3 left-3 text-gray-400" />
                   <Textarea
+                    name="message"
                     placeholder="Your Message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
                     required
                     className="pl-10 w-full border-orange-200 focus:border-green-500 focus:ring-green-500"
                   />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
                 <div className="transition-all duration-300 ease-in-out transform hover:scale-105">
-                  <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600 text-white">
-                    Send Your Query <Send className="ml-2" size={16} />
+                  <Button type="submit" disabled={state.submitting} className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                    {state.submitting ? "Sending..." : "Send Your Query"} <Send className="ml-2" size={16} />
                   </Button>
                 </div>
               </form>
+              <ValidationError errors={state.errors} />
             </div>
           </div>
         </div>
-        {mailtoLink && (
-          <div className="mt-8 bg-white p-6 rounded-lg shadow-md transition-all duration-500 ease-in-out opacity-100">
-            <p className="text-green-700 mb-4 text-center">Your email is ready to be sent. Click the button below to open your email client:</p>
-            <a href={mailtoLink} className="inline-block w-full">
-              <div className="transition-all duration-300 ease-in-out transform hover:scale-105">
-                <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
-                  Open Email Client <Mail className="ml-2" size={16} />
-                </Button>
-              </div>
-            </a>
-          </div>
-        )}
       </div>
     </section>
   )
 }
 
 export default Contact
-
-// import { useForm, ValidationError } from "@formspree/react";
-
-// export default function ContactForm() {
-//   // Pass your form ID as the argument to useForm hook
-//   if (!process.env.NEXT_PUBLIC_FORM) {
-//     throw new Error("NEXT_PUBLIC_FORM environment variable is not defined");
-//   }
-  
-//   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
-
-//   // Render a success message after form submission
-//   if (state.succeeded) {
-//     return <p>Thanks for your submission!</p>;
-//   }
-
-//   return (
-//     <form onSubmit={handleSubmit} aria-label="Contact Form">
-//       {/* Email Field */}
-//       <label htmlFor="email">Email Address</label>
-//       <input
-//         id="email"
-//         type="email"
-//         name="email"
-//         required
-//         placeholder="Enter your email"
-//         aria-required="true"
-//       />
-//       <ValidationError prefix="Email" field="email" errors={state.errors} />
-
-//       {/* Message Field */}
-//       <label htmlFor="message">Message</label>
-//       <textarea
-//         id="message"
-//         name="message"
-//         required
-//         placeholder="Enter your message"
-//         aria-required="true"
-//         rows={4}
-//       />
-//       <ValidationError prefix="Message" field="message" errors={state.errors} />
-
-//       {/* Submit Button */}
-//       <button type="submit" disabled={state.submitting}>
-//         {state.submitting ? "Submitting..." : "Submit"}
-//       </button>
-
-//       {/* General Errors */}
-//       <ValidationError errors={state.errors} />
-//     </form>
-//   );
-// }
