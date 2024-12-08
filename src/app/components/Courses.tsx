@@ -16,14 +16,14 @@ type Course = {
 const CourseCard = ({ course, index }: { course: Course; index: number }) => (
   <div className="opacity-0 translate-y-4 animate-fadeIn" style={{ animationDelay: `${index * 100}ms` }}>
     <Card className="h-full bg-white border-orange-200 border-2 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-      <div className="relative h-40">
+      <div className="relative h-48">
         <Image
           src={course.image}
           alt={course.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="transition-transform duration-300 hover:scale-110"
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
         <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
           <CardHeader className="pb-2">
@@ -152,19 +152,18 @@ const CourseCarousel = ({ courses }: { courses: Course[] }) => {
 
 const Courses = () => {
   const ugCourses: Course[] = [
-    { title: "BA (Bachelor of Arts)", description: "A comprehensive arts program covering humanities and social sciences.", image: "/images/card-img-1.jpg", duration: "3 years" },
-    { title: "BCA (Bachelor of Computer Applications)", description: "A specialized program in computer applications and software development.", image: "/images/card-img.jpg", duration: "3 years" },
-    { title: "BBA (Bachelor of Business Administration)", description: "A program designed to develop future business leaders and managers.", image: "/images/card-img-2.jpg", duration: "3 years" },
+    { title: "BA (Bachelor of Arts)", description: "A comprehensive arts program covering humanities and social sciences.", image: "/images/card-img-21.jpg", duration: "3 years" },
+    { title: "BCA (Bachelor of Computer Applications)", description: "A specialized program in computer applications and software development.", image: "/images/card-img-1.jpg", duration: "3 years" },
+    { title: "BBA (Bachelor of Business Administration)", description: "A program designed to develop future business leaders and managers.", image: "/images/card-img.jpg", duration: "3 years" },
     { title: "B.Com (Bachelor of Commerce)", description: "A program focused on business, finance, and economics.", image: "/images/card-img-3.jpg", duration: "3 years" },
-    { title: "B.Tech (Bachelor of Technology)", description: "An engineering program covering various technological fields.", image: "/images/card-img-4.jpg", duration: "4 years" },
   ]
 
   const pgCourses: Course[] = [
-    { title: "MA (Master of Arts)", description: "An advanced program in arts, deepening knowledge in specific humanities or social science fields.", image: "/images/card-img-5.jpg", duration: "2 years" },
-    { title: "MCA (Master of Computer Applications)", description: "An advanced program in computer applications, focusing on software development and IT management.", image: "/images/card-img-6.jpg", duration: "2 years" },
-    { title: "MBA (Master of Business Administration)", description: "A graduate-level business program developing advanced management and leadership skills.", image: "/images/card-img-7.jpg", duration: "2 years" },
-    { title: "M.Tech (Master of Technology)", description: "An advanced engineering program with specialized technological focus.", image: "/images/card-img-8.jpg", duration: "2 years" },
-    { title: "M.Com (Master of Commerce)", description: "A postgraduate program in commerce, finance, and business studies.", image: "/images/card-img.jpg", duration: "2 years" },
+    { title: "MA (Master of Arts)", description: "An advanced program in arts, deepening knowledge in specific humanities or social science fields.", image: "/images/card-img-51.jpg", duration: "2 years" },
+    { title: "MCA (Master of Computer Applications)", description: "An advanced program in computer applications, focusing on software development and IT management.", image: "/images/card-img-611.jpg", duration: "2 years" },
+    { title: "MBA (Master of Business Administration)", description: "A graduate-level business program developing advanced management and leadership skills.", image: "/images/card-img-711.jpg", duration: "2 years" },
+    { title: "MAJMC (Master of Arts in Journalims and Mass Communication)", description: "MAJMC is a postgraduate program that focuses on the study of media, communication, and journalism skills.", image: "/images/card-img-8.jpg", duration: "2 years" },
+    { title: "M.Com (Master of Commerce)", description: "A postgraduate degree that specializes in advanced studies of commerce, finance, accounting, and business management.", image: "/images/card-img.jpg", duration: "2 years" },
   ]
 
   return (

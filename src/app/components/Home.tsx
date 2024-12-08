@@ -54,10 +54,14 @@ const Home = () => {
   return (
     <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {mounted && <BackgroundSlider />}
-      <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
-      <div className="relative z-20 text-center w-full max-w-4xl px-6 py-12 bg-transparent backdrop-blur-sm rounded-lg">
-        <h1 className="text-5xl font-bold text-white mb-6 leading-tight">Welcome to Pathway Prodigy</h1>
-        <p className="text-2xl font-bold text-orange-400 mb-10">Your one-stop solution for Career Excellence</p>
+      <div className="absolute inset-0 bg-black opacity-20 z-10"></div>
+      <div className="relative z-20 text-center w-full max-w-4xl px-6 py-12 rounded-lg">
+        <h1 className="text-5xl font-bold text-white mb-6 leading-tight [text-shadow:_2px_2px_10px_rgb(0_0_0_/_90%)] drop-shadow-lg">
+          Welcome to Pathway Prodigy
+        </h1>
+        <p className="text-2xl font-bold mb-10 [color:#ff8a00] [text-shadow:0_0_2px_#fff,0_0_4px_#fff,0_0_8px_#ff8a00,0_0_12px_#ff8a00] motion-safe:animate-pulse">
+          Your one-stop solution for Career Excellence
+        </p>
       </div>
     </section>
   )

@@ -19,7 +19,7 @@ const faqData: FAQItem[] = [
     },
     {
         question: "How is Pathway Prodigy different?",
-        answer: "We provide unbiased counselling for higher and professional courses, exclusively in UGC-approved universities, both nationally and internationally. Our expert team ensures full support and guidance for your career."
+        answer: "We provide unbiased counselling for higher and professional courses, exclusively in UGC-approved universities. We offer exam assistance during project work and exam periods, along with support for your career growth and development."
     },
     {
         question: "What else does Pathway Prodigy offer?",
@@ -48,7 +48,7 @@ const FAQItem = ({ item }: { item: FAQItem }) => {
                 className="flex justify-between items-center w-full text-left"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <span className="text-lg font-semibold text-green-700">{item.question}</span>
+                <span className="text-lg font-semibold text-orange-600">{item.question}</span>
                 {isOpen ? (
                     <ChevronUp className="h-5 w-5 text-orange-500" />
                 ) : (
@@ -56,7 +56,7 @@ const FAQItem = ({ item }: { item: FAQItem }) => {
                 )}
             </button>
             {isOpen && (
-                <p className="mt-2 text-orange-600 font-bold">{item.answer}</p>
+                <p className="mt-2 text-grey-700">{item.answer}</p>
             )}
         </div>
     )

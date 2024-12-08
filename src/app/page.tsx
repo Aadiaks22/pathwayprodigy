@@ -13,8 +13,8 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-green-50">
       <Header />
+      <Home />
       <main className="container mx-auto px-4">
-        <Home />
         <Services />
         <Courses />
         <JobOpportunities/>

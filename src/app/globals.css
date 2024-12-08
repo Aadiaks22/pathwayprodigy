@@ -125,3 +125,7 @@ body {
   width: 100%;
 }
 
+.glow {
+  filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));
+}
+

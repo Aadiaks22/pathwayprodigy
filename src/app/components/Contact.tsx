@@ -42,7 +42,7 @@ const Contact = () => {
           <div className="md:flex">
             <div className="md:w-1/2 bg-orange-400 p-8 text-white">
               <h3 className="text-2xl font-semibold mb-4">Contact Information</h3>
-              <p className="mb-4">We had love to hear from you. Fill out the form and we will get back to you as soon as possible.</p>
+              <p className="mb-4">We would love to hear from you. Fill out the form and we will get back to you as soon as possible.</p>
               <div className="flex items-center mb-4">
                 <Mail className="mr-2" />
                 <span>pathwayprodigy@gmail.com</span>

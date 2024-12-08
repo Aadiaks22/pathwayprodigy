@@ -45,17 +45,17 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1">
             <Image
               src="/images/logopathway.png"
               alt="Pathway Prodigy Logo"
-              width={60}
-              height={60}
+              width={80}
+              height={80}
               className="rounded-full"
             />
-            <div>
+            <div className='text-center'>
               <span className="text-xl font-bold text-green-700">Pathway Prodigy</span><br />
-              <span className="text-sm font-bold text-green-600">Making Path To Your Dreams</span>
+              <span className="text-sm  text-green-800">Making Path To Your Dreams</span>
             </div>
           </div>
           

@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+//import { Badge } from "@/components/ui/badge"
 import { GraduationCap, BookOpen, Users, Award } from 'lucide-react'
 
 const About = () => {
@@ -38,12 +38,12 @@ const About = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           <div>
             <Users className="w-8 h-8 text-orange-500 mx-auto mb-2" />
-            <p className="text-2xl font-bold text-green-700">1000+</p>
+            <p className="text-2xl font-bold text-green-700">1500+</p>
             <p className="text-gray-600">Students</p>
           </div>
           <div>
             <BookOpen className="w-8 h-8 text-orange-500 mx-auto mb-2" />
-            <p className="text-2xl font-bold text-green-700">20+</p>
+            <p className="text-2xl font-bold text-green-700">25+</p>
             <p className="text-gray-600">Courses</p>
           </div>
           <div>
@@ -57,7 +57,7 @@ const About = () => {
             <p className="text-gray-600">Awards</p>
           </div>
         </div>
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <h3 className="text-2xl font-semibold text-green-700 mb-4">Our Programs</h3>
           <div className="flex flex-wrap justify-center gap-2">
             {['MBA', 'MCA', 'MA', 'MCom', 'BBA', 'BCA', 'BA', 'BCom'].map((program) => (
@@ -66,7 +66,7 @@ const About = () => {
               </Badge>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )
