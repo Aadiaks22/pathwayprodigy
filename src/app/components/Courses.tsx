@@ -163,7 +163,7 @@ const Courses = () => {
     { title: "MCA (Master of Computer Applications)", description: "An advanced program in computer applications, focusing on software development and IT management.", image: "/images/card-img-611.jpg", duration: "2 years" },
     { title: "MBA (Master of Business Administration)", description: "A graduate-level business program developing advanced management and leadership skills.", image: "/images/card-img-711.jpg", duration: "2 years" },
     { title: "MAJMC (Master of Arts in Journalims and Mass Communication)", description: "MAJMC is a postgraduate program that focuses on the study of media, communication, and journalism skills.", image: "/images/card-img-8.jpg", duration: "2 years" },
-    { title: "M.Com (Master of Commerce)", description: "A postgraduate degree that specializes in advanced studies of commerce, finance, accounting, and business management.", image: "/images/card-img.jpg", duration: "2 years" },
+    { title: "M.Com (Master of Commerce)", description: "A postgraduate degree that specializes in advanced studies of commerce, finance, accounting, and business management.", image: "/images/card-img-101.jpg", duration: "2 years" },
   ]
 
   return (
